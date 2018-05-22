@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,13 +23,13 @@
   </header>
 
   <main id="maincontent" role="main">
-    <section id="map-container"  role="contentinfo" aria-label="Map Preview">
-      <div id="map"></div>
+    <section id="map-container"  role="contentinfo" aria-label="Map Preview" >
+      <div id="map" ></div>
     </section>
     <section role="contentinfo" aria-label="Restaurants list">
-      <div class="filter-options">
+      <div class="filter-options" >
         <h2>Filter Results</h2>
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Select Neighborhood">
+        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Select Neighborhood" tabindex="0">
           <option value="all">All Neighborhoods</option>
         </select>
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Select Cuisine">
@@ -40,17 +40,18 @@
     </section>
   </main>
 
-  <!-- Service Worker -->
+  <!-- Service Worker Registration-->
 <script>
-   //if (!navigator.serviceWorker) return
-
-  navigator.serviceWorker.register('/sw.js').then(function() {
-    console.log('Service Worker Registration Worked!');
-  }).catch(function() {
-    console.log('Service Worker Registration Failed!');
-  });
-
-</script>
+   if (navigator.serviceWorker) {
+		navigator.serviceWorker.register('./sw.js', {scope: './'}).then(function(registration){
+				console.log(registration);
+			}).catch(function(error){
+				console.log(error);
+			})
+   } else {
+	   	console.log('Service Worker is not supported in this browser.');
+   }
+</script> 
 
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>

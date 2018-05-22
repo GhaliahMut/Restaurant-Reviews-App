@@ -149,7 +149,7 @@ nav h1 a {
   letter-spacing: 0;
   margin: 20px;
   padding: 0 10px;
-  width: 25%;
+  width: 45%;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -382,101 +382,83 @@ nav h1 a {
 
 /* ====================== Media Queries ====================== */
 
-/* ====================== Home Page ====================== */
+/* ====================== Home Page, Resturant Info Page ====================== */
+@media only screen and (max-width: 490px) {
+  .reviews-header-date {
+    padding: 15px 0% 15px 0% !important;
+  }
+}
 
-@media (min-width: 340px) and (max-width: 619px) {
-
+@media only screen and (max-width: 600px) {
   #restaurants-list li {
     width: 96% !important;
 }
+
+  nav {
+    height: 90px;
+  }
+
+  .filter-options select {
+    margin: 10px 5px;
+    width: 42% !important;
 }
 
-@media (min-width: 620px) and (max-width: 739px) {
+.inside #map-container {
+    height: 600px;
+    width: 100%;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 60px;
+}
 
+.inside header {
+    position: relative;
+    width: 100%;
+   float: left;
+}
+
+.inside #footer {
+   position: relative;
+    width: 100%;
+    float: left;
+    padding: 10px;
+}
+
+#breadcrumb {
+    float: left;
+    width: 100%;
+}
+
+#restaurant-container, #reviews-container {
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 40px 40px 30px;
+    width: 100%;
+}
+
+  .reviews-header-name {
+    padding: 15px 2% 15px 10%;
+}
+
+  .reviews-header-date {
+    padding: 15px 0% 15px 15%;
+}
+}
+
+
+
+@media only screen and (max-width: 767px) and (min-width: 601px) {
   #restaurants-list li {
     width: 45.5% !important;
 }
-}
 
-@media (min-width: 640px) and (max-width: 720px) {
-
-  #restaurants-list li {
-    width: 46.5% !important;
-}
-}
-
-@media (min-width: 721px) and (max-width: 860px) {
-
-  #restaurants-list li {
-    width: 46.8% !important;
-}
-}
-
-@media (min-width: 860px) and (max-width: 889px) {
-
-  #restaurants-list li {
-    width: 47.5% !important;
-}
-}
-
-@media (min-width: 890px) and (max-width: 1024px) {
-
-  #restaurants-list li {
-    width: 30.9% !important;
-}
-}
-
-
-@media (min-width: 1025px) and (max-width: 1109px) {
-
-  #restaurants-list li {
-    width: 31.2% !important;
-}
-}
-
-@media (min-width: 1110px) and (max-width: 1169px) {
-
-  #restaurants-list li {
-    width: 23.1% !important;
-}
-}
-
-
-@media (min-width: 1170px) and (max-width: 1320px) {
-
-  #restaurants-list li {
-    width: 23.2% !important;
-}
-}
-
-/* ====================== Resturant Info Page ====================== */
-
-@media (min-width: 1100px) and (max-width: 1240px) {
-
-  .reviews-header-date {
-    padding: 15px 25px 15px 15%;
-}
-}
-
-@media (min-width: 340px) and (max-width: 490px) {
-
-  .reviews-header-date {
-    padding: 15px 0 15px 0;
-}
-}
-
-@media (min-width: 491px) and (max-width: 640px) {
-
-  .reviews-header-date {
-    padding: 15px 0 15px 15%;
-}
-}
-
-
-@media (min-width: 340px) and (max-width: 1024px) {
-
-nav {
-    height: 100px;
+  .filter-options select {
+    margin: 10px 5px;
+    width: 45%;
 }
 
 .inside #map-container {
@@ -502,7 +484,7 @@ nav {
 }
 
 #breadcrumb {
-    float:left;
+    float: left;
     width: 100%;
 }
 
@@ -514,4 +496,119 @@ nav {
     padding: 40px 40px 30px;
     width: 100%;
 }
+
+  .reviews-header-name {
+    padding: 15px 2% 15px 10%;
 }
+
+  .reviews-header-date {
+    padding: 15px 0% 15px 15%;
+}
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  #restaurants-list li {
+    width: 46.8% !important;
+}
+
+  .filter-options select {
+    margin: 10px;
+    width: 45%;
+}
+
+.inside #map-container {
+    height: 600px;
+    width: 100%;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.inside header {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.inside #footer {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+#breadcrumb {
+    float: left;
+    width: 100%;
+}
+
+#restaurant-container, #reviews-container {
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 40px 40px 30px;
+    width: 100%;
+}
+
+.reviews-header-date {
+    padding: 15px 0% 15px 25%;
+}
+} 
+
+@media only screen and (max-width: 1150px) and (min-width: 992px) {
+  #restaurants-list li {
+    width: 30.9% !important;
+}
+
+  .filter-options select {
+    margin: 10px;
+    width: 45%;
+}
+
+.reviews-header-date {
+    padding: 15px 0% 15px 10%;
+}
+}
+/*.inside #map-container {
+    height: 600px;
+    width: 100%;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.inside header {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.inside #footer {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+#breadcrumb {
+    float: left;
+    width: 100%;
+}
+
+#restaurant-container, #reviews-container {
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 40px 40px 30px;
+    width: 100%;
+}
+
+.reviews-header-date {
+    padding: 15px 0% 15px 25%;
+}
+}
+*/

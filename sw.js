@@ -1,11 +1,7 @@
-self.addEventListener('install', function (event) {
 
-  var cache_name = 'restaurant-reviews-cache';
-
-  event.waitUntil(
-    caches.open('restaurant-reviews-cache').then(function(cache) {
-      return cache.addAll([
-        '/',
+var CACHE_NAME = 'restaurant-reviews-app-cache';
+var CACHE_FILES = [
+'/',
         './index.html',
         './restaurant.html',
         './css/styles.css',
@@ -24,29 +20,58 @@ self.addEventListener('install', function (event) {
         './img/9.jpg',
         './img/10.jpg',
         'https://fonts.googleapis.com/css?family=Montserrat:400,600,800'
-      ]);
-    })
-  );
-}); 
+];
 
-self.addEventListener('activate',  function(event) {
+self.addEventListener('install', function (event) {
+  //console.log(event);
   event.waitUntil(
-    caches.delete('restaurant-app-cache')
-  );
-});
-
-/*self.addEventListener('activate',  event => {
-  event.waitUntil(self.clients.claim());
-});*/
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      if (response) return response;
-      return fetch(event.request);
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Cache opened');
+        return cache.addAll(CACHE_FILES);
     })
   );
 });
-  
 
 
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request).then(function (res) {
+      if(res){
+        return res;
+      }
+      requestData(event);
+    })
+  )
+});
+
+function requestData(event){
+  var url = event.request.clone();
+  return fetch(url).then(function(res) {
+
+    if(!res || res.status !== 200 || res.type !== 'basic'){
+      return res;
+    }
+
+    var response = res.clone();
+
+    caches.open(CACHE_NAME).then(function (cache){
+      cache.put(event.request, response);
+    });
+
+    return res;
+  })
+}
+
+self.addEventListener('activate', function (event) {
+  //console.log(event);
+  event.waitUntil(
+    caches.keys().then(function(keys) {
+      return Promise.all(keys.map(function (key,i){
+        if (key !== CACHE_NAME){
+          return caches.delete(keys[i]);
+        }
+      }))
+    })
+  )
+});
